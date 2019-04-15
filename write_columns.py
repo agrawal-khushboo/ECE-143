@@ -12,11 +12,13 @@ def write_columns(data,fname):
     """
     assert type(fname)==str
     assert type(sum(data))
-    f=open('fname','w') 
+    f=open(fname,'w') 
     for d in data:
         d1=d
         d2=d**2
         d3=(d1+d2)/3
         f.write(str(d1)+','+str(d2)+','+str(d3)+'\n')
     f.close()
-   
+    
+        
+    
