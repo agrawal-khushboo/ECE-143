@@ -7,8 +7,10 @@ def slide_window(x,width,increment):
     y=[]
     try:
         for i in range(0,len(x)-width+1,increment):
-            z=x[i:(i+5)]
+            z=x[i:(i+width)]
             y.append(z)
         return y
     except:
         return []
+    
+    
