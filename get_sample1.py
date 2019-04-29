@@ -1,5 +1,6 @@
 import random
-def get_sample(nbits,prob,n):
+import math
+def get_sample(nbits=1, prob={'0':0.5, '1': 0.5}, n=2):
     """
     Given a number of bits, write the get_sample function to return a list n of random samples from 
     a finite probability mass function defined by a dictionary with keys defined by a specified number of bits. 
@@ -12,14 +13,21 @@ def get_sample(nbits,prob,n):
     assert nbits>0
     assert n>=0
     assert type(prob)==dict
-    s=0.0
+    b=[]
+    for i in range(2**nbits):
+        bi=int(bin(i)[2:])
+        b.append(bi)   
     for p in prob:
-        assert type(prob[p])==float or type(prob[p])==int
-        s+=prob[p]       
-    assert s==1.0
+        pi=int(p)
+        assert pi in b
+        assert 0.0<=prob[p]<=1.0
+    values=list(prob.values())
+    assert math.fsum(values)==1
     assert len(prob)==2**nbits
     if n==0:
         return []
     else:
         l=random.choices(list(prob),list(prob.values()),k=n)
         return l
+
+    
